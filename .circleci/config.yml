@@ -4,10 +4,10 @@ jobs:
     docker:
       - image: circleci/php:7.3-node-browsers
     steps:
-      - checkout 
+       - checkout
       - run: composer install -n --prefer-dist
       - run: npm ci
       - run: npm run dev
-      -run:
-        name: php test
-        command: vendor/bin/phpunit
+      - run:
+          name: php test
+          command: ./vendor/bin/phpunit
