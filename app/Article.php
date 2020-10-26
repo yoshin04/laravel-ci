@@ -21,6 +21,7 @@ class Article extends Model
     public function likes(): BelongsToMany
     {
         return $this->belongsToMany('App\User', 'likes')->withTimestamps();
+        //ArticleモデルとUserモデルを、likeテーブルを通じた多対多の関係で結びつける
     }
 
     public function isLikedBy(?User $user): bool

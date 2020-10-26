@@ -18,7 +18,8 @@ class CreateArticlesTable extends Migration
             $table->string('title');
             $table->text('body');
             $table->bigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');//外部キー制約
+            //user_idカラムはusersテーブルのidカラムを参照する
             $table->timestamps();
         });
     }
