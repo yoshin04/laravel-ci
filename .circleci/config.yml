@@ -8,6 +8,4 @@ jobs:
       - run: php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');" &&     php composer-setup.php &&     php -r "unlink('composer-setup.php');" &&     mv composer.phar /usr/local/bin/composer
       - run: npm ci
       - run: npm run dev
-      - run:
-          name: php test
-          command: $(composer config bin-dir)/phpunit
+      - run: vendor/bin/phpunit
