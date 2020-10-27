@@ -2,13 +2,13 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/php:7.3-node-browsers
+      - image: circleci/php:latest
     steps:
       - checkout
       - run: php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');" &&     php composer-setup.php &&     php -r "unlink('composer-setup.php');" &&     mv composer.phar /usr/local/bin/composer
-      - run: composer require --dev 'phpunit/phpunit'
       - run: npm ci
       - run: npm run dev
+      - 
       - run:
           name: php test
           command: vendor/bin/phpunit
