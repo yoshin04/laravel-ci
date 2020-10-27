@@ -5,8 +5,8 @@ jobs:
       - image: circleci/php:7.3-node-browsers
     steps:
       - checkout
-      - run: composer install -n --prefer-dist
-      - run: composer self-update --1
+      - run: php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');" &&     php composer-setup.php &&     php -r "unlink('composer-setup.php');" &&     mv composer.phar /usr/local/bin/composer
+      - run: sudo composer self-update --1
       - run: npm ci
       - run: npm run dev
       - run:
