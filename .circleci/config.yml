@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: composer install -n --prefer-dist
-      - run: sudo composer self-update --rollback
+      - run: composer dump autoload
       - run: npm ci
       - run: npm run dev
       - run:
