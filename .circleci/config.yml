@@ -7,8 +7,7 @@ jobs:
       - checkout
       - remote_cache:
         key:composer-v1-{{checksum "composer.lock"}} ##保存されたキャッシュの復元
-      - run: php -r "copy('https://raw.githubusercontent.com/composer/getcomposer.org/master/web/installer', 'composer-setup.php');" &&     php composer-setup.php &&     php -r "unlink('composer-setup.php');" &&     mv composer.phar /usr/local/bin/composer
-      - run: composer install
+      - run: composer install --prefer-dist
       - save_cache:
         key:composer-v1-{{checksum "composer.lock"}}
         paths:
