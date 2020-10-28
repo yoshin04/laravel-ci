@@ -5,13 +5,7 @@ jobs:
       - image: circleci/php:7.3-node-browsers
     steps:
       - checkout
-      - remote_cache:
-        key:composer-v1-{{checksum "composer.lock"}} ##保存されたキャッシュの復元
       - run: composer install --prefer-dist
-      - save_cache:
-        key:composer-v1-{{checksum "composer.lock"}}
-        paths:
-          - vendor
       - run: npm ci
       - run: npm run dev
       - run:
